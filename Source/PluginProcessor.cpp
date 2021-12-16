@@ -95,7 +95,6 @@ void Resonator2poleAudioProcessor::prepareToPlay (double sampleRate, int samples
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    
     currentSampleRate = sampleRate;
     z1L = 0.0;
     z1R = 0.0;
@@ -103,7 +102,6 @@ void Resonator2poleAudioProcessor::prepareToPlay (double sampleRate, int samples
     z2R = 0.0;
     setCut(500.0);
     setRes(0.5);
-    
 }
 
 void Resonator2poleAudioProcessor::releaseResources()
