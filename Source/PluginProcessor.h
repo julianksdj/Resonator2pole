@@ -65,10 +65,7 @@ public:
         updateFilter();
     };
     void updateFilter(){
-        z1L = 0.0;
-        z2L = 0.0;
-        z1R = 0.0;
-        z2R = 0.0;
+        // Resonator filter formulas from the book (chapter 6.3.1)
         frec = juce::MathConstants<float>::twoPi * cut / currentSampleRate;
         bw = cut / res;
         b2L = exp(- juce::MathConstants<float>::twoPi * bw / currentSampleRate);
@@ -78,17 +75,24 @@ public:
         a0L = (1-b2L) * sqrt(1 - b1L * b1L / (4 * b2L));
         a0R = a0L;
     };
+    
+    //getters (for gui)
+    float getRes(){
+        return res;
+    };
+    float getCut(){
+        return cut;
+    };
 
 private:
     
     //filter coefficents
-    //float a0L, a0R, b1L, b1R, z1L, z1R;
-    float b2L, b2R, b1L,b1R, a0L, a0R;
-    float z1L, z1R, z2L, z2R;
-    float cut, res;
-    float frec;
-    float currentSampleRate;
+    float b2L, b2R, b1L,b1R, a0L, a0R; //filter coefficients
+    float z1L, z1R, z2L, z2R; //delays
+    float cut, res; //cutoff frequency, resonance (Q)
+    float frec; //normalized cutoff frequency
     float bw; //bandwith
+    float currentSampleRate;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Resonator2poleAudioProcessor)
 };

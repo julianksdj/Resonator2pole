@@ -15,15 +15,17 @@ Resonator2poleAudioProcessorEditor::Resonator2poleAudioProcessorEditor (Resonato
 {
     setSize (400, 300);
     addAndMakeVisible(cutSlider);
-    cutSlider.setRange (20, 20000);
+    cutSlider.setRange (20.0, 20000.0);
     cutSlider.addListener (this);
+    cutSlider.setValue(audioProcessor.getCut());
     addAndMakeVisible (cutLabel);
     cutLabel.setText ("Cutoff frequency", juce::dontSendNotification);
     cutLabel.attachToComponent (&cutSlider, true);
     
     addAndMakeVisible(resSlider);
-    resSlider.setRange (0.5,10);
+    resSlider.setRange (0.5,10.0);
     resSlider.addListener (this);
+    resSlider.setValue(audioProcessor.getRes());
     addAndMakeVisible (resLabel);
     resLabel.setText ("Resonance", juce::dontSendNotification);
     resLabel.attachToComponent (&resSlider, true);
@@ -50,7 +52,6 @@ void Resonator2poleAudioProcessorEditor::resized()
 {
     cutSlider.setBounds(100,140,250,20);
     resSlider.setBounds(100,160,250,20);
-    
 }
 
 

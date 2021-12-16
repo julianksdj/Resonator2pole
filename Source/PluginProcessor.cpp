@@ -101,8 +101,8 @@ void Resonator2poleAudioProcessor::prepareToPlay (double sampleRate, int samples
     z1R = 0.0;
     z2L = 0.0;
     z2R = 0.0;
-    setCut(0.0);
-    setRes(0.0);
+    setCut(500.0);
+    setRes(0.5);
     
 }
 
@@ -146,7 +146,7 @@ void Resonator2poleAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
+    
     //LEFT CHANNEL PROCESSING
     int channel = 0;
     for (auto sample = 0; sample < buffer.getNumSamples(); ++sample)
