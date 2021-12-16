@@ -44,8 +44,6 @@ void Resonator2poleAudioProcessorEditor::paint (juce::Graphics& g)
     g.setColour (juce::Colours::white);
     g.setFont (19.0f);
     g.drawFittedText ("Resonator 2-pole filter", 0, 30, getWidth(), 5, juce::Justification::centred, 1);
-    //g.setFont (15.0f);
-    //g.drawFittedText ("y(n) = a0 * x(n) - b1 * y(n-1)", 0, 60, getWidth(), 5, juce::Justification::centred, 1);
 }
 
 void Resonator2poleAudioProcessorEditor::resized()
